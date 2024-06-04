@@ -8,22 +8,35 @@ namespace DIVisualizer.Server.Services
 {
     public class GithubService : IGithubService
     {
+        private readonly ILogger<GithubService> logger;
+
+        public GithubService(ILogger<GithubService> logger)
+        {
+            this.logger = logger;
+        }
         public async Task<string> GetDependencyInformation(string url)
         {
-
-            string tempDirectory = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-            Directory.CreateDirectory(tempDirectory);
+            string path = @"c:\MyDir";
 
 
-            var result = Repository.Clone(url, tempDirectory);
+            if (Directory.Exists(path))
+            {
+                Console.WriteLine("That path exists already.");
+                Directory.Delete(path, true);
+            }
 
-            Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(tempDirectory));
+            DirectoryInfo di = Directory.CreateDirectory(path);
+            Console.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
+            
+            var result = Repository.Clone(url, path);
 
-            Directory.Delete(tempDirectory, true);
-
-            return tempDirectory;
+            di.Delete();
+            Console.WriteLine("The directory was deleted successfully.");
+            return path;
         }
 
     }
+
 }
+
 
