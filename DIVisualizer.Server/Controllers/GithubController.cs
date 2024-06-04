@@ -17,10 +17,13 @@ namespace DIVisualizer.Server.Controllers
 
         [HttpGet]
         [Route("[controller]")]
-        public async Task<string> GetDependencyInformation([FromQuery] string repourl)
+        public async Task<string> GetDependencyInformation([FromQuery] string url)
         {
-            var information = await githubService.GetDependencyInformation(repourl);
-            logger.LogInformation(repourl);
+            if (!Uri.IsWellFormedUriString(url, UriKind.Absolute))
+                throw new Exception("Format your url properly.");
+
+            var information = await githubService.GetDependencyInformation(url);
+
             return information;
         }
     }
