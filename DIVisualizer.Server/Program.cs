@@ -1,3 +1,4 @@
+using DIVisualizer.Server.Models;
 using DIVisualizer.Server.Services;
 using Serilog;
 
@@ -19,7 +20,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IGithubService, GithubService>();
+builder.Services.AddScoped<SftpConfig, SftpConfig>();
+builder.Services.AddScoped<ISftpService, SftpService>();
 
 
 var app = builder.Build();

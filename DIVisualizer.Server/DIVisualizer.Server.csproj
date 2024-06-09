@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -10,10 +10,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CustomActionFilters\**" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="Mappings\**" />
+    <Compile Remove="Middlewares\**" />
+    <Content Remove="CustomActionFilters\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Mappings\**" />
+    <Content Remove="Middlewares\**" />
+    <EmbeddedResource Remove="CustomActionFilters\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Mappings\**" />
+    <EmbeddedResource Remove="Middlewares\**" />
+    <None Remove="CustomActionFilters\**" />
+    <None Remove="Data\**" />
+    <None Remove="Mappings\**" />
+    <None Remove="Middlewares\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LibGit2Sharp" Version="0.30.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>8.*-*</Version>
     </PackageReference>
+    <PackageReference Include="SSH.NET" Version="2024.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
 	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
@@ -41,14 +61,6 @@
     <ProjectReference Include="..\divisualizer.client\divisualizer.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CustomActionFilters\" />
-    <Folder Include="Data\" />
-    <Folder Include="Mappings\" />
-    <Folder Include="Middlewares\" />
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>
