@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DIVisualizer.Server/NewFolder/SftpConfig.cs
+/DIVisualizer.Server/Models/SftpConfig.cs
