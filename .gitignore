@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /DIVisualizer.Server/NewFolder/SftpConfig.cs
 /DIVisualizer.Server/Models/SftpConfig.cs
+/DIVisualizer.Server/appsettings.json
